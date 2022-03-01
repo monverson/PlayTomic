@@ -59,13 +59,19 @@ public class StripeServiceTest {
 
     @Test
     public void test_ok() throws StripeServiceException {
+        //given
         mockServer.expect(requestTo(testUri)).andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK));
+
+        //when
         s.charge("4242 4242 4242 4242", new BigDecimal(15));
     }
 
     @Test
     public void test_exception() {
+        //given
         mockServer.expect(requestTo(testUri)).andRespond(MockRestResponseCreators.withStatus(HttpStatus.UNPROCESSABLE_ENTITY));
+
+        //when
         Assertions.assertThrows(StripeAmountTooSmallException.class, () -> s.charge("4242 4242 4242 4242", new BigDecimal(5)));
     }
 
