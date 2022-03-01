@@ -22,7 +22,7 @@ import java.util.concurrent.CompletableFuture;
 public class WalletServiceImpl implements WalletService {
 
     private final Logger log = LoggerFactory.getLogger(WalletService.class);
-    private static final BigDecimal MINIMUM_VALUE = new BigDecimal(10);
+    private static final BigDecimal MINIMUM_VALUE = new BigDecimal(5);
     private static final String LESS_THAN_MINIMUM_AMOUNT = "The entered amount is not enough";
     private final WalletRepository walletRepository;
     private final StripeService stripeService;
